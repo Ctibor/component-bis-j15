@@ -6,7 +6,7 @@
     <copyright> </copyright>
     <license>GNU - general public license</license>
     <authorEmail>zeten30@gmail.com</authorEmail>
-    <version>0.4.1</version>
+    <version>1.0.0</version>
     <description>Komponenta pro zobrazení dat z BISu - vyžaduje nainstalovaný a zapnutý Contet plugin BIS (plg_bis)</description>
     
     <files folder="site">
