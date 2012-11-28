@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="Seznam akcí/položek">
+        <message>
+            <![CDATA[Seznam akcí/položek]]>
+        </message>
+    </layout>
+    <state>
+        <name>Seznam akcí/položek z BISu</name>
+        <description>Zobrazení seznamu dat z BISu</description>
+        <params>
+            <param type="spacer" default='&lt;strong&gt;&lt;a href="https://sites.google.com/site/zeten30/projects/joomla-15-bis"&gt;Dokumentace&lt;/a&gt;&lt;/strong&gt;'/>
+            <param type="spacer" default="&lt;h3&gt;Zobrazení dat&lt;/h3&gt;"/>
+            <param name="show-type" type="list" default="all" label="Zobrazit" description="Jaké akce chcete zobrazit?">
+                <option value="all">všechny typy akcí</option>
+                <option value="vik">jen víkendovky</option>
+                <option value="tabor">jen tábory</option>
+                <option value="klub">jen kluby</option>
+                <option value="custom">vlastní dotaz do BISu - ostatní volby jsou pak ignorovány</option>
+            </param>
+            <param name="custom-query" type="text" default="query=akce" label="Vlastní dotaz do BISu:" description="Parametry dotazu do BISu pro volbu zobrazit vlastní dotaz." />
+            <param name="only-year" type="text" default="" label="Zobrazit pouze rok:" description="Zobrazit data pouze ze zadaného roku." />
+            <param name="only-program" type="list" default="" label="Zobrazit pouze akce programu:" description="Zobrazení akcí pouze zadaného programu">
+                <option value=""></option>
+                <option value="ap">Akce příroda</option>
+                <option value="pamatky">Akce památky</option>
+                <option value="ekostan">Ekostan</option>
+                <option value="brdo">BRĎO</option>
+                <option value="psb">PsB</option>
+                <option value="vzdelavani">Vzdělávání</option>
+            </param>
+            <param name="css_class" type="text" default="com_bis" label="CSS třída" description="CSS třída mateřského elementu div" />
+            
+            <param type="spacer" default="&lt;h3&gt;Šablona pro zobrazení dat&lt;/h3&gt;"/>
+            <param type="spacer" default="&lt;strong&gt;Zobrazení seznamu&lt;/strong&gt;"/>
+            <param name="tpl-head" type="textarea" default="" label="Záhlaví" description="Záhlaví - kód před výpisem dat" rows="5" cols="40" />
+            <param name="tpl-item" type="textarea" default='
+&lt;div style="clear: right;" class="##even_odd_plg_bis##"&gt;\n
+&lt;h3&gt;\n
+&lt;a href="##link_detail_plg_bis##"&gt;
+##nazev##\n
+&lt;/a&gt; \n
+##ikona_prg_plg_bis=26,tmava,ikona-pr##&lt;/h3&gt;\n
+&lt;p&gt;&lt;em&gt;##od_do_plg_bis##&lt;/em&gt;&lt;/p&gt;\n
+&lt;div&gt;\n
+---if obrazek---\n
+&lt;div style="float: right"&gt;##obrazek_plg_bis=200,0,bis_img##&lt;/div&gt;\n
+------\n
+##text##\n
+&lt;/div&gt;\n
+&lt;p&gt;\n
+&lt;strong&gt;Místo:&lt;/strong&gt; ##lokalita## \n
+---if_not promenna=sraz,---\n
+&lt;strong&gt;Sraz:&lt;/strong&gt; ##sraz## \n
+------\n
+&lt;strong&gt;Věk:&lt;/strong&gt; ##vek_plg_bis## \n
+&lt;strong&gt;Kontakt:&lt;/strong&gt; ##kontakt## \n
+&lt;strong&gt;Telefon:&lt;/strong&gt; ##kontakt_telefon## \n
+---if_not promenna=web,---\n
+&lt;strong&gt;Web:&lt;/strong&gt; ##web_plg_bis##\n
+------\n
+&lt;strong&gt;Email:&lt;/strong&gt; ##kontakt_email_plg_bis## \n
+---if prilohy---\n
+&lt;strong&gt;Přílohy:&lt;/strong&gt; \n
+##staz_priloh_plg_bis##\n
+------\n
+&lt;/p&gt;\n
+&lt;/div&gt;\n
+        ' label="Akce/Položka" description="Kód pro zobrazení položek/dat - proměnné se značí ##jmeno##" rows="7" cols="40" />
+            <param name="tpl-foot" type="textarea" default="" label="Zápatí" description="Zápatí - kód za výpisem dat" rows="5" cols="40" />
+            
+            <param type="spacer" default="&lt;strong&gt;Zobrazení detailu&lt;/strong&gt;"/>
+            <param name="tpl-detail-head" type="textarea" default="" label="Záhlaví" description="Záhlaví - kód před výpisem dat" rows="5" cols="40" />
+            <param name="tpl-detail-item" type="textarea" default='
+&lt;div&gt;\n
+&lt;h3&gt;##nazev## \n
+##ikona_prg_plg_bis=38,tmava,ikona-pr##\n
+&lt;/h3&gt;\n
+&lt;p&gt;\n
+&lt;em&gt;##od## \n
+---if_not promenna=sraz,---\n
+##sraz## \n
+------\n
+- ##do##&lt;/em&gt;\n
+&lt;/p&gt;\n
+&lt;div&gt;\n
+&lt;div style="float: right"&gt;##obrazek_plg_bis=200,0,bis_img##&lt;/div&gt;\n
+##text##\n
+&lt;/div&gt;\n
+&lt;table&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Druh:&lt;/th&gt;\n
+&lt;td&gt;##typ##&lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Místo:&lt;/th&gt;\n
+&lt;td&gt;##lokalita## &lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Věk:&lt;/th&gt;\n
+&lt;td&gt;##vek_plg_bis## &lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Pořádající ZČ nebo klub:&lt;/th&gt;\n
+&lt;td&gt;##porada##&lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Organizátorský tým:&lt;/th&gt;\n
+&lt;td&gt;##org##&lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Kontakt:&lt;/th&gt;\n
+&lt;td&gt;##kontakt##&lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Telefon:&lt;/th&gt;\n
+&lt;td&gt;##kontakt_telefon## &lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Email:&lt;/th&gt;\n
+&lt;td&gt;##kontakt_email_plg_bis##&lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;tr&gt;\n
+&lt;th&gt;Web:&lt;/th&gt;\n
+&lt;td&gt;##web_plg_bis##&lt;/td&gt;\n
+&lt;/tr&gt;\n
+&lt;/table&gt;\n
+&lt;/div&gt;\n
+        ' label="Akce/Položka" description="Kód pro zobrazení položek/dat - proměnné se značí ##jmeno##" rows="7" cols="40" />
+            <param name="tpl-detail-foot" type="textarea" default="" label="Zápatí" description="Zápatí - kód za výpisem dat" rows="5" cols="40" />
+        </params>
+    </state>
+</metadata>
