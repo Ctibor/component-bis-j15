@@ -27,9 +27,15 @@ class bisModelBis extends JModel {
         if ($show_type == 'custom') {
             if (strlen($custom_query) > 0) {
                 $ret['query'] = $custom_query;
+                if (strlen($bis_id) > 0) {
+		            $ret['query'].="&id=$bis_id";
+                }
                 return $ret;
             } else {
                 $ret['query'] = 'query=akce';
+                if (strlen($bis_id) > 0) {
+		            $ret['query'].="&id=$bis_id";
+                }
                 return $ret;
             }
         }
